@@ -69,7 +69,7 @@ class LLAMA:
 
 def main():
     obj = LLAMA(
-        model_path="/mnt/storage/RandomCS/text-generation-webui/models/mistral-7b-v0.1.Q2_K.gguf"
+        model_path="/mnt/storage/RandomCS/text-generation-webui/models/tinyllama-1.1b-1t-Q4gguf/tinyllama-1.1b-intermediate-step-480k-1t.Q4_K_S.gguf"
     )
     print("---------------------------------------------------------")
     print(

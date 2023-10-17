@@ -7,7 +7,7 @@ from abc import ABC, abstractmethod
 
 class LLM_BASE(ABC):
     @abstractmethod
-    def generate(self, prompt, temperature):
+    def generate(self, prompt, temperature, use_template):
         pass
 
 
@@ -18,8 +18,8 @@ class LLMFactory:
     def register_type(self, key, creator):
         self._creatores[key] = creator
 
-    def get_llm(self, key, path_to_model, gpu_layers):
+    def get_llm(self, key, path_to_model, gpu_layers, context_length):
         creator = self._creatores[key]
         if not creator:
             raise ValueError("Unsupported LLM Engine Type")
-        return creator(path_to_model, gpu_layers)
+        return creator(path_to_model, gpu_layers, context_length)
