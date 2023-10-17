@@ -13,11 +13,11 @@ app = Flask(__name__)
 def main_page():
     return "Hey There, to use this very specific but soon generic API, use '/generate'"
 
-@app.route("/generate", methods = ["POST"])
+
+@app.route("/generate", methods=["POST"])
 def generate_text():
-    prompt = request.form.get('prompt')
+    prompt = request.form.get("prompt")
     # Some LLM generation
     results = ""
 
     return results
-
