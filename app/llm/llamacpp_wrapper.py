@@ -1,5 +1,6 @@
 from llama_cpp import Llama
 from llm.llm_blueprint import LLM_BASE
+import template
 
 
 class LLAMA_CPP_BASE(LLM_BASE):
@@ -21,29 +22,35 @@ class LLAMA_CPP_BASE(LLM_BASE):
             n_parts=n_parts,
         )
 
-    def templify(self, prompt: str, template = None) -> str:
+    def templify(self, prompt: str) -> str:
         """
         templify the prompt
         """
-        if template == None:
-            with open("./llm/templates/tinyllama.txt", "r") as f:
-                template = "\n".join(f.readlines())
+        USER_NAME = template.USER_NAME
+        AI_NAME = template.AI_NAME
+        temp_base = template.template
+        data = template.data
+        chat_script = template.chat_script
+        user_prompt = f"{USER_NAME}: {prompt}\n"
 
-        prompt = template[:-1] + " " + prompt + "\n<|im_end|>\n<|im_start|>assistant"
+        prompt = temp_base + chat_script         
+        prompt += user_prompt
 
         return prompt
 
     def generate(
-        self, prompt, temperature=0.10, use_template = True
+        self, prompt, temperature=0.5, use_template = True
         ):
+        prompt = self.templify(prompt = prompt) if use_template else prompt
         stream_of_reply = self.model(
             prompt,
-            stop=["<|im_start|>"],
-            max_tokens=4096,
+            stop=[f"{template.USER_NAME}"],
+            max_tokens=2048,
             stream=True,
-            temperature=temperature,
+            temperature= temperature,
+            top_k=0,
+            top_p=0.73,
         )
-        prompt = self.templify(prompt = prompt) if use_template else prompt
         print(prompt)
 
         reply = ""

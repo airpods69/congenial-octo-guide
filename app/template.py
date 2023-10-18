@@ -10,10 +10,7 @@ chat_script = f"""
 {AI_NAME}: A cat is a domestic species of small carnivorous mammal. It is the only domesticated species in the family Felidae.
 {USER_NAME}: Name a color.
 {AI_NAME}: Red, it is the color of blood.
-{USER_NAME}: Do you know about the medical field?
-{AI_NAME}: Yes, I am aware of the medical field. What specifically would you like to know about it?
-{USER_NAME}: """
-
+"""
 data = """
 Dispute Reference Number: DISP-243276
 Qualification Questions
@@ -123,4 +120,70 @@ Signature:
 Varenyam Jr Fligel
 Date:
 02/01/2023
+"""
+
+qpr_data = """
+TOGETHER HEALTH INSURANCE COMPANY PAYER CONTACT: BEETOWN SERVICE CENTER
+
+ 
+
+9900 BREN ROAD PHONE: (877) 943-4321
+BIGWHEEL, MN 56454-0775
+R EMERGENCY DOCTORS EIN: 732377158
+PO BOX 745817 NPI: 2467480493
+LEBANON, OH 46374-5817 EFT: 2UA56186421
+CHECK DATE: 03/08/2023
+CHECK AMT: 3101.68
+PRODUCTION DATE: 03/03/2023
+PROV SERV_DATE POS NOS PROC MODS BILLED ALLOWED DEDUCT COINS GRP/RC-AMT PROV PD
+vae I acnt - ICN: EU77747359
+1245306096
+
+CORRECTED: NA HICN: CLM
+Status:1 MRN:
+
+  
+
+ 
+
+GRP/POL NUM:182563
+1720038649 1025 102522 23 1 99284 920.00 204.65 0.00 0.00 PI-242 715.35 204.65
+REM: N830
+1720038649 1025 102522 23 1 99053 68.00 68.00 0.00 0.00 PI-234 68.00 0.00
+REM: M80
+PT RESP 0.00 SUB TOTALS 988.00 272.65 0.00 0.00 783.35 204.65
+ADJ TO TOTALS: PREV PD 0.00 INTEREST 0.00 LATE FILING CHARGE 0.00
+NET 204.65
+TOTALS : # OF CLAIMS BILLED AMT ALLOWED AMT DEDUCT AMT COINS AMT RC-AMT PROV PAID PROV ADJ CHECK AMT
+1 988.00 272.65 0.00 0.00 783.35 204.65 209.37 3101.68
+PROVIDER ADJ DETAILS: PLB REASON CODE FCN / Other Identifier AMOUNT
+WO 20221025 322289692400 102.03
+WO 20221103 322961973/400 -66.54
+WO 20221103 323568973400 71.26
+WO 20221113 323689304/400 -61.10
+WO 20221205 329489465/400 163.72
+
+ 
+
+GLOSSARY: Adjustment, Group, Reason, MOA, and Remark codes
+
+PI- Payor initiated reductions. In the opinion of the payer, the adjustment is not the responsibility of the patient,
+but no supporting contract exists between the provider and the payer.
+
+242Services not provided by network/primary care providers.
+234This procedure is not paid separately. At least one Remark Code must be provided (may be comprised of either the
+NCPDP Reject Reason Code, or Remittance Advice Remark Code that is not an ALERT.)
+
+N830 Rlert: The charge[s] for this service was processed in accordance with Federal/ State, Balance Billing/ No
+Surprise Billing regulations. As such, any amount identified with OA, CO, or PI cannot be collected from the
+member and may be considered provider liability or be billable to a subsequent payer. Any amount the provider
+collected over the identified PR amount must be refunded to the patient within applicable Federal/State
+timeframes. Payment amounts are eligible for dispute pursuant to any Federal/State documented appeal/grievance
+process (es) .
+
+M80 Not covered when performed during the same session/date as a previously processed service for the patient.
+
+Wo Use this for the recovery of previous overpayment. An identifying number should be provided in PLB03-2. See the
+notes on codes 72 and B3 for additional information about balancing against a provider refund. Medicare Part A
+will provide code “OR” in PLBO3-2.
 """
