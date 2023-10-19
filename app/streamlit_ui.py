@@ -10,7 +10,7 @@ st.title("Simple chat")
 
 # Initialize chat history
 if "messages" not in st.session_state:
-    st.session_state.messages = []
+    st.session_state.messages = [{"role": "user", "content": f"Hello {AI_NAME}"}, {"role": "assistant", "content": f"Hello {USER_NAME}! How may I help you today?"}, {"role": "user", "content": f"What is a cat?"}, {"role": "assistant", "content": "A cat is a domestic species of small carnivorous mammal. It is the only domesticated species in the family Felidae."}]
 
 uploaded_file = st.file_uploader("Choose file to summarize")
 content = ""
@@ -23,7 +23,7 @@ if uploaded_file is not None:
 
 
 # Display chat messages from history on app rerun
-for message in st.session_state.messages:
+for message in st.session_state.messages[4:]:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
