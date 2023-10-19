@@ -30,14 +30,18 @@ class LLAMA_CPP_BASE(LLM_BASE):
         temp_base = template.template
         # chat_script = template.chat_script
         user_prompt = f"{USER_NAME}: {prompt}\n"
-
+        print(chat_script)
         prompt = temp_base + chat_script
         prompt += user_prompt
 
         return prompt
 
     def generate(self, prompt, chat_script: str, temperature=0.5, use_template=True):
-        prompt = self.templify(prompt=prompt, chat_script = chat_script) if use_template else prompt
+        prompt = (
+            self.templify(prompt=prompt, chat_script=chat_script)
+            if use_template
+            else prompt
+        )
         stream_of_reply = self.model(
             prompt,
             stop=[f"{template.USER_NAME}"],
@@ -54,4 +58,3 @@ class LLAMA_CPP_BASE(LLM_BASE):
             reply += line["choices"][0]["text"]
 
         return reply
-

@@ -1,16 +1,16 @@
+from typing import List
 import streamlit as st
 import random
 import time
 from llm_interface import generate_reply
 from document_reader import get_content
-from template import chat_script, AI_NAME
-chat_script = chat_script
+from template import chat_script, AI_NAME, USER_NAME
 
 st.title("Simple chat")
 
 # Initialize chat history
 if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "assistant", "content": "Hey there!"}]
+    st.session_state.messages = []
 
 uploaded_file = st.file_uploader("Choose file to summarize")
 content = ""
@@ -26,6 +26,17 @@ if uploaded_file is not None:
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
+
+
+def generate_chat_script(messages: List[dict]):
+    chat_script = ""
+    for message in messages[-5:]:
+        chat_script += (
+                f"{AI_NAME}: " if message["role"] == "assistant" else f"{USER_NAME}: "
+        ) + message["content"] + "\n"
+
+    return chat_script
+
 
 # Accept user input
 if prompt := st.chat_input("What is up?"):
@@ -47,10 +58,8 @@ if prompt := st.chat_input("What is up?"):
         #     ]
         # )
         assistant_response = generate_reply(
-            f"\n{content}\n"
-            + prompt, chat_script
+            f"\n{content}\n" + prompt, generate_chat_script(st.session_state.messages)
         )
-        chat_script += f"{AI_NAME}: {assistant_response.split(f'{AI_NAME}')[-1]}"
         # Simulate stream of response with milliseconds delay
         for chunk in assistant_response.split():
             full_response += chunk + " "
