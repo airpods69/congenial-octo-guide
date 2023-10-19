@@ -51,7 +51,7 @@ class LLAMA_CPP_BASE(LLM_BASE):
             top_k=0,
             top_p=0.73,
         )
-        print(prompt)
+        # print(prompt)
 
         reply = ""
         for line in stream_of_reply:
