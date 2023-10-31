@@ -64,6 +64,6 @@ def get_content(pdf_bytes) -> str:
     """
     pages = get_pages(pdf_bytes)
     content = read_pages(pages=pages)
-    content = "\n".join(content)
+    content = "".join(content)
 
     return content

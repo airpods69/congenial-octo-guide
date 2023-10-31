@@ -1,0 +1,23 @@
+<#meta#>
+- Date: 2023-10-31
+- Task: summary
+<#system#>
+Your main objective is to condense the content of the document into a concise summary, capturing the main points and themes.
+<#chat#>
+<#user#>
+Please read the provided Original section to understand the context and content. Use this understanding to generate a summary of the Original section. Separate the article into chunks, and sequentially create a summary for each chunk. Focus on summarizing the Original section, ignoring any details about sponsorships/advertisements in the text.
+
+Summarized Sections:
+1. For each chunk, provide a concise summary. Start each summary with "Chunk (X of Y):" where X is the current chunk number and Y is the total number of chunks.
+
+To craft a Final Summary:
+1. Read the Summarized Sections: Carefully review all the summarized sections you have generated. Ensure that you understand the main points, key details, and essential information from each section.
+2. Identify Main Themes: Identify the main themes and topics that are prevalent throughout the summarized sections. These themes will form the backbone of your final summary.
+3. Consolidate Information: Merge the information from the different summarized sections, focusing on the main themes you have identified. Avoid redundancy and ensure the consolidated information flows logically.
+4. Preserve Essential Details: Preserve the essential details like dates, amounts, etc. and nuances that are crucial for understanding the document. Consider the type of document and the level of detail required to capture its essence.
+5. Draft the Final Summary: After considering all the above points, draft a final summary that represents the main ideas, themes, and essential details of the document. Start this section with "Final Summary:"
+
+Ensure that your final output is thorough, and accurately reflects the document’s content and purpose.
+<#user_context#>
+{user_context}
+<#bot#>
